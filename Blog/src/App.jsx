@@ -3,15 +3,20 @@ import { useState } from "react";
 function App() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    if (image) formData.append("image", image);
+
     const res = await fetch("http://localhost:5000/api/blogs", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, description }),
+      body: formData,
     });
     const data = await res.json();
     setLoading(false);
@@ -25,6 +30,7 @@ function App() {
       <form
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded shadow-md w-full max-w-md"
+        encType="multipart/form-data"
       >
         <h2 className="text-2xl font-bold mb-6">Create Blog</h2>
         <input
@@ -41,6 +47,12 @@ function App() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
+        />
+        <input
+          type="file"
+          accept="image/*"
+          className="w-full mb-4"
+          onChange={(e) => setImage(e.target.files[0])}
         />
         <button
           type="submit"
