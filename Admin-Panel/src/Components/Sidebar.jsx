@@ -42,7 +42,7 @@ export default function Sidebar() {
                     </ul>
                     <div style={{ position: 'absolute', bottom: 0, width: '100%' }}>
                         <a
-                            href='/login'
+                            href='/'
                             className='nav-link d-flex align-items-center justify-content-center py-3'
                             style={{ borderTop: '1px solid #eee', color: '#264653' }}
                         >
