@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react'
 import feather from 'feather-icons'
+import { useLocation } from 'react-router-dom'
 
 export default function Sidebar() {
+    const location = useLocation()
+    const path = location.pathname
+
     useEffect(() => {
         feather.replace()
-    }, [])
+    }, [path])
 
     return (
         <>
@@ -17,19 +21,19 @@ export default function Sidebar() {
                     </div>
                     <ul className='sidebar-menu'>
                         <li className='menu-header'>Main</li>
-                        <li className='dropdown active'>
+                        <li className={`dropdown${path === '/dashboard' ? ' active' : ''}`}>
                             <a href='/dashboard' className='nav-link'>
                                 <i data-feather='monitor'></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li>
+                        <li className={path === '/addBlog' ? 'active' : ''}>
                             <a className='nav-link' href='/addBlog'>
                                 <i data-feather='layout'></i>
                                 <span>Add Blog</span>
                             </a>
                         </li>
-                        <li>
+                        <li className={path === '/viewBlogs' ? 'active' : ''}>
                             <a className='nav-link' href='/viewBlogs'>
                                 <i data-feather='grid'></i>
                                 <span>Blogs List</span>

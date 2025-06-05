@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import NavBar from './NavBar'
 import Slider from './Carousel'
 import FooTer from './Footer'
-import ReactPage from '../Technologies/ReactPage'
 import 'animate.css'
 import { FaCode, FaUsers, FaRocket, FaGlobe } from 'react-icons/fa'
 
