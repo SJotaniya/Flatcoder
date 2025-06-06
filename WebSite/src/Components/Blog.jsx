@@ -28,6 +28,7 @@ export default function Blog() {
             category: 'Design',
             image: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&h=400&fit=crop',
             likes: 42,
+            
         },
         {
             id: 2,
